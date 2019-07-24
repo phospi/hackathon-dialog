@@ -1,0 +1,495 @@
+---
+- description: Load Balancer
+  buttons: submit,cancel
+  label: load_balancer_dialog
+  dialog_tabs:
+  - description: 
+    display: 
+    label: New tab
+    display_method: 
+    display_method_options: 
+    position: 0
+    dialog_groups:
+    - description: 
+      display: 
+      label: VM Information
+      display_method: 
+      display_method_options: 
+      position: 0
+      dialog_fields:
+      - name: vm_name
+        description: ''
+        data_type: 
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: true
+        required_method: 
+        required_method_options: {}
+        default_value: ''
+        values: 
+        values_method: 
+        values_method_options: {}
+        options:
+          :protected: false
+        label: VM Name
+        position: 0
+        validator_type: f
+        validator_rule: 
+        reconfigurable: false
+        dynamic: false
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldTextBox
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: 
+          ae_class: 
+          ae_instance: 
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders: []
+      - name: check_load_balancer
+        description: ''
+        data_type: 
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: f
+        values: 
+        values_method: 
+        values_method_options: {}
+        options:
+          :protected: false
+        label: Want to add it load balancer?
+        position: 1
+        validator_type: 
+        validator_rule: 
+        reconfigurable: false
+        dynamic: false
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldCheckBox
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: CheckVisibility
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders:
+        - load_balancer_type
+      - name: load_balancer_type
+        description: ''
+        data_type: string
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: true
+        required_method: 
+        required_method_options: {}
+        default_value: ''
+        values_method: 
+        values_method_options: {}
+        options:
+          :sort_by: description
+          :sort_order: ascending
+        label: Select the load balancer
+        position: 2
+        validator_type: 
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldRadioButton
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: CheckVisibility
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders:
+        - existing_lb_name
+        - check_list
+        - pool_name
+        - vs_name
+        - lb_method
+        values: 
+      - name: existing_lb_name
+        description: ''
+        data_type: string
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: ''
+        values_method: 
+        values_method_options: {}
+        options:
+          :sort_by: description
+          :sort_order: ascending
+          :force_multi_value: false
+        label: Select ELB
+        position: 3
+        validator_type: 
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldDropDownList
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: ListELB
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders: []
+        values: 
+      - name: check_list
+        description: ''
+        data_type: 
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: 
+        values_method: 
+        values_method_options: {}
+        options:
+          :protected: false
+        label: Not in the list
+        position: 4
+        validator_type: 
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldCheckBox
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: CheckELBVisibility
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders:
+        - new_elb_name
+        - elb_port
+        - param_region
+        - param_az
+      - name: new_elb_name
+        description: ''
+        data_type: 
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: 
+        values_method: 
+        values_method_options: {}
+        options:
+          :protected: false
+        label: ELB Name
+        position: 5
+        validator_type: f
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldTextBox
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: CheckList
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders: []
+      - name: elb_port
+        description: ''
+        data_type: 
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: 
+        values_method: 
+        values_method_options: {}
+        options:
+          :protected: false
+        label: ELB Port
+        position: 6
+        validator_type: f
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldTextBox
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: CheckList
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders: []
+      - name: param_region
+        description: ''
+        data_type: 
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: 
+        values_method: 
+        values_method_options: {}
+        options:
+          :protected: false
+        label: Region
+        position: 7
+        validator_type: f
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldTextBox
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: CheckList
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders: []
+      - name: param_az
+        description: ''
+        data_type: string
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: ''
+        values_method: 
+        values_method_options: {}
+        options:
+          :sort_by: description
+          :sort_order: ascending
+          :force_multi_value: false
+        label: Availability Zone
+        position: 8
+        validator_type: 
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldDropDownList
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: ListAZ
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders: []
+        values: 
+      - name: pool_name
+        description: ''
+        data_type: 
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: 
+        values_method: 
+        values_method_options: {}
+        options:
+          :protected: false
+        label: Pool Name
+        position: 9
+        validator_type: f
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldTextBox
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: CheckF5Visibility
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders: []
+      - name: vs_name
+        description: ''
+        data_type: 
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: 
+        values_method: 
+        values_method_options: {}
+        options:
+          :protected: false
+        label: Virtual Server Name
+        position: 10
+        validator_type: f
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldTextBox
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: CheckF5Visibility
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders: []
+      - name: lb_method
+        description: ''
+        data_type: 
+        notes: 
+        notes_display: 
+        display: edit
+        display_method: 
+        display_method_options: {}
+        required: false
+        required_method: 
+        required_method_options: {}
+        default_value: 
+        values_method: 
+        values_method_options: {}
+        options:
+          :protected: false
+        label: Load Balancer Method
+        position: 11
+        validator_type: f
+        validator_rule: 
+        reconfigurable: false
+        dynamic: true
+        show_refresh_button: false
+        load_values_on_init: false
+        read_only: false
+        auto_refresh: false
+        trigger_auto_refresh: false
+        visible: true
+        type: DialogFieldTextBox
+        resource_action:
+          action: 
+          resource_type: DialogField
+          ae_namespace: ServiceDialog
+          ae_class: Methods
+          ae_instance: CheckF5Visibility
+          ae_message: 
+          ae_attributes: {}
+        dialog_field_responders: []
