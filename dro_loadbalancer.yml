@@ -22,6 +22,6 @@
             lb_service: Service
             lb_vm: Vm
           methods:
-            list_instances
-            add_to_lb
-            remove_from_lb
+            - list_instances
+            - add_to_lb
+            - remove_from_lb
