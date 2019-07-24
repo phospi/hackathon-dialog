@@ -1,0 +1,27 @@
+--
+  tasks:
+  - name: Create Generic Object Definition
+    uri:
+      url: "https://localhost/api/generic_object_definitions"
+      method: POST
+      user: admin
+      password: "{{ password }}"
+      validate_certs: no
+      headers:
+        Content-Type:  application/json
+      body_format: json
+      body:
+        action: create
+        name: LoadBalancer
+        properties:
+          attributes:
+            lb_name: string
+            lb_type: string
+            miq_provision_task_id: string
+          associations:
+            lb_service: Service
+            lb_vm: Vm
+          methods:
+            list_instances
+            add_to_lb
+            remove_from_lb
